@@ -53,9 +53,7 @@ export default function Footer() {
                 <div>
                   <div
                     className="text-xs tracking-widest uppercase font-semibold"
-                    style={item.gradient
-                      ? { background: item.gradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }
-                      : { color: item.color }}
+                    style={{ color: item.color }}
                   >
                     {item.label}
                   </div>
