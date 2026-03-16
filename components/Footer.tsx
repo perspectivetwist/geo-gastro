@@ -91,19 +91,6 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        {/* Gastro-Hub Hotmail-Prinzip */}
-        <div className="text-center text-xs text-gray-500 mt-8 pb-4">
-          <span>Erstellt mit </span>
-          <a
-            href="https://ai-gastro-hub.vercel.app?utm_source=report&utm_medium=footer&utm_campaign=hotmail&utm_content=geo-gastro"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-gray-300"
-          >
-            AI-Gastro-Hub
-          </a>
-          <span> — Kostenloser AI-Readiness Check</span>
-        </div>
       </div>
     </footer>
   )
