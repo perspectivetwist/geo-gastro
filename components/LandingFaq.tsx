@@ -5,25 +5,41 @@ import { ChevronDown, ChevronUp, Shield, Zap, MapPin } from 'lucide-react'
 
 const faqItems = [
   {
-    question: 'Was ist GEO für Restaurants?',
-    answer: 'GEO (Generative Engine Optimization) bedeutet: Kennen KI-Systeme wie ChatGPT den Ruf deines Restaurants? Dazu zählen deine Google-Bewertungen, Erwähnungen in Restaurantführern, Brancheneinträge und Social-Media-Präsenz. Wer dort fehlt, wird von KI nicht empfohlen.',
+    question: 'Verliere ich wirklich Gäste durch KI?',
+    answer: 'Ja — still und leise. Wenn jemand ChatGPT fragt "Welches italienische Restaurant ist gut in München-Schwabing?" und dein Restaurant nicht in der Antwort erscheint, existierst du für diesen potenziellen Gast nicht. Das passiert heute schon millionenfach täglich.',
     alwaysOpen: true,
   },
   {
-    question: 'Was prüft der GEO-Scanner?',
-    answer: 'Wir prüfen 6 Reputations-Dimensionen: Google Business Profile Vollständigkeit, Bewertungsanzahl und -qualität, Erwähnungen in relevanten Verzeichnissen, Social-Media-Präsenz, Presse-Erwähnungen und Konsistenz deiner Unternehmensdaten über alle Plattformen.',
+    question: 'Warum gibt es den GEO Scanner und warum jetzt?',
+    answer: 'Weil Restaurants online unsichtbar werden — ohne es zu merken.\n\nChatGPT empfiehlt keine Restaurants, die es nicht kennt. Es empfiehlt Betriebe mit starkem digitalem Ruf: Bewertungen, Erwähnungen, Branchenprofile. Die Zahlen:\n\n• 63% aller Websites erhalten bereits Traffic von KI-Suchmaschinen (Ahrefs 2025)\n• 58% der Konsumenten haben Google durch KI-Tools ersetzt für Produkt- und Servicesuche (Capgemini 2025)\n• +527% Anstieg KI-generierter Website-Referrals in nur 5 Monaten (Previsible Jan–Mai 2025)\n• 800 Mio. wöchentliche ChatGPT-Nutzer — Stand Ende 2025 (OpenAI)\n• Kombination aus Struktur + Statistiken = stärkste KI-Sichtbarkeits-Intervention (Princeton GEO-Bench Paper)\n\nDer GEO Scanner zeigt in Sekunden wie stark der digitale Ruf deines Restaurants in den Augen von KI-Systemen ist.',
   },
   {
-    question: 'Was ist der Unterschied zwischen AEO und GEO?',
-    answer: 'AEO optimiert deine Website für KI-Lesbarkeit. GEO optimiert deinen Ruf im Internet. Ein Restaurant braucht beides: eine KI-lesbare Website (AEO) UND einen starken digitalen Ruf (GEO). Nur dann empfiehlt ChatGPT dein Restaurant.',
+    question: 'Mein Restaurant läuft gut — warum soll ich mir Sorgen machen?',
+    answer: 'Weil Google-Rankings und KI-Sichtbarkeit zwei verschiedene Systeme sind. Dein Restaurant kann auf Seite 1 bei Google stehen und trotzdem von ChatGPT, Perplexity & Co. komplett ignoriert werden. KI zitiert nach anderen Regeln.',
   },
   {
-    question: 'Mein Restaurant hat 200 Google-Bewertungen. Ist mein GEO-Score gut?',
-    answer: 'Nicht unbedingt. GEO misst mehr als nur Bewertungsanzahl. Wenn du auf TripAdvisor nicht gelistet bist, kein vollständiges Google Business Profile hast oder deine Öffnungszeiten auf verschiedenen Plattformen widersprüchlich sind — verlierst du GEO-Punkte trotz guter Bewertungen.',
+    question: 'Was macht der GEO Scanner genau?',
+    answer: 'Er analysiert deine Restaurant-Website auf 5 Signale die KI-Assistenten nutzen um Quellen auszuwählen: Struktur, Schema-Daten, Fakten, Expertise-Signale und technische Zugänglichkeit. Du bekommst einen Score von 0–100 und siehst wo dein Restaurant steht.',
   },
   {
-    question: 'Was kostet der GEO-Scan?',
-    answer: 'Kostenlos. Den vollständigen Aktionsplan mit priorisierten Verbesserungen gibt es nach Email-Eingabe.',
+    question: 'Was ist der Unterschied zu SEO?',
+    answer: 'SEO optimiert für Google-Klicks. GEO optimiert dafür, dass KI-Assistenten dein Restaurant als Quelle zitieren. Beides ist wichtig — aber es sind verschiedene Spiele mit verschiedenen Regeln.',
+  },
+  {
+    question: 'Was bedeutet mein GEO-Score?',
+    answer: 'Er zeigt wie wahrscheinlich es ist, dass KI-Assistenten dein Restaurant als vertrauenswürdige Quelle erkennen. Unter 50: dringende Baustellen. 50–75: Potenzial vorhanden. Über 75: gut aufgestellt.',
+  },
+  {
+    question: 'Ich habe schon SEO — warum brauche ich das noch?',
+    answer: 'Weil 58% der Nutzer KI bereits statt Google nutzen für Restaurant- und Servicefindung (Capgemini 2025). SEO allein reicht nicht mehr. GEO ist die nächste Schicht.',
+  },
+  {
+    question: 'Ist das auch für kleine Restaurants sinnvoll?',
+    answer: 'Gerade dann. Große Ketten werden von KI oft automatisch genannt. Kleine und mittlere Gastronomiebetriebe müssen aktiv die richtigen Signale setzen — sonst werden sie übergangen.',
+  },
+  {
+    question: 'Was mache ich mit dem Report?',
+    answer: 'Du bekommst konkrete Aufgaben pro Bereich — ohne Fachbegriffe. Entweder selbst umsetzen oder deinem Webentwickler schicken. Die meisten Fixes sind in 1–2 Stunden erledigt.',
   },
 ]
 
