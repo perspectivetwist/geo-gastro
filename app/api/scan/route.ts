@@ -4,6 +4,7 @@ import { analyzeGeo } from '@/lib/analyzer'
 import { checkRateLimit } from '@/lib/rate-limit'
 import { GeoAnalysis } from '@/types/geo'
 import { logScan } from '@/lib/notion'
+import { pingIndexNow } from '@/lib/indexnow'
 
 // SSRF-Schutz: Interne IPs und Hostnamen blocken
 const BLOCKED_HOSTS = [
@@ -107,6 +108,9 @@ export async function POST(request: NextRequest) {
 
     // Scan in Notion loggen
     await logScan(analysis.url, analysis.score.total)
+
+    // IndexNow: Result-URL an Bing pushen (fire-and-forget)
+    pingIndexNow(analysis.url)
 
     const response = NextResponse.json(previewResponse)
     response.headers.set('X-RateLimit-Remaining', String(remaining))
