@@ -2,37 +2,37 @@ import Link from 'next/link'
 
 const ecosystem = [
   {
-    label: "AI-Shift-Drift",
-    color: "#FFB432",
+    label: "AI-Gastro-Hub",
+    color: "#FF006E",
     gradient: "linear-gradient(135deg, #FFB432 0%, #FF3CAC 50%, #FF2D78 100%)",
     dotBg: "linear-gradient(135deg, #FFB432 0%, #FF3CAC 50%, #FF2D78 100%)",
     dotShadow: "0 0 8px 2px rgba(255,180,50,0.4)",
-    desc: "KI-Readiness für KMUs",
-    url: "https://ai-shift-drift-psi.vercel.app/",
+    desc: "AI-Readiness für die Gastronomie",
+    url: "https://ai-gastro-hub.vercel.app/",
   },
   {
     label: "Wake | AEO",
     color: "#6366f1",
     dotBg: "#6366f1",
     dotShadow: "0 0 8px 2px #6366f166",
-    desc: "Wird dein Unternehmen von ChatGPT&Co zitiert?",
-    url: "https://aeo-transformer.vercel.app/",
+    desc: "Wird dein Restaurant von ChatGPT&Co zitiert?",
+    url: "https://aeo-gastro.vercel.app/",
   },
   {
     label: "Slipstream",
-    color: "#facc15",
-    dotBg: "#facc15",
-    dotShadow: "0 0 8px 2px #facc1566",
-    desc: "Können Nutzer via KI-Agenten Umsatz bei deinem Unternehmen generieren?",
-    url: "https://agentready-transformer.vercel.app/",
+    color: "#FFE600",
+    dotBg: "#FFE600",
+    dotShadow: "0 0 8px 2px #FFE60066",
+    desc: "Können Gäste via KI-Agenten bei deinem Restaurant reservieren?",
+    url: "https://agentready-gastro.vercel.app/",
   },
   {
     label: "Quantum",
     color: "#FF2D55",
     dotBg: "#FF2D55",
     dotShadow: "0 0 8px 2px #FF2D5566",
-    desc: "Wie angreifbar ist dein Unternehmen bei KI-Attacken?",
-    url: "https://quantum-scanner.vercel.app/",
+    desc: "Wie angreifbar ist dein Restaurant bei KI-Attacken?",
+    url: "https://aisecurity-gastro.vercel.app/",
   },
 ]
 
@@ -44,7 +44,7 @@ export default function Footer() {
         {/* Ecosystem Badges */}
         <div className="mb-8">
           <div className="text-xs tracking-widest uppercase mb-6" style={{ color: "#888", textShadow: "0 0 12px rgba(255,255,255,0.15)" }}>
-            Teil des AI-Shift-Drift Ökosystems
+            Teil des AI-Gastro-Hub Ökosystems
           </div>
           <div className="flex flex-col gap-4">
             {ecosystem.map((item) => (
@@ -91,18 +91,18 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        {/* ASD Hotmail-Prinzip */}
+        {/* Gastro-Hub Hotmail-Prinzip */}
         <div className="text-center text-xs text-gray-500 mt-8 pb-4">
           <span>Erstellt mit </span>
           <a
-            href="https://ai-shift-drift-psi.vercel.app?utm_source=report&utm_medium=footer&utm_campaign=hotmail&utm_content=geo-gastro"
+            href="https://ai-gastro-hub.vercel.app?utm_source=report&utm_medium=footer&utm_campaign=hotmail&utm_content=geo-gastro"
             target="_blank"
             rel="noopener noreferrer"
             className="underline hover:text-gray-300"
           >
-            AI Shift Drift
+            AI-Gastro-Hub
           </a>
-          <span> — Kostenloser KI-Sichtbarkeits-Scanner</span>
+          <span> — Kostenloser AI-Readiness Check</span>
         </div>
       </div>
     </footer>
