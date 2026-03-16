@@ -8,6 +8,7 @@ import ScoreDimensions from '@/components/ScoreDimensions'
 import IndustryRanking from '@/components/IndustryRanking'
 import EmailGate from '@/components/EmailGate'
 import ActionPlan from '@/components/ActionPlan'
+import CrossSell from '@/components/CrossSell'
 
 export default function ResultsPage() {
   const router = useRouter()
@@ -60,6 +61,8 @@ export default function ResultsPage() {
         {result.actionPlan && (
           <ActionPlan actionPlan={result.actionPlan} isUnlocked={isUnlocked} />
         )}
+
+        <CrossSell />
 
         <div className="text-center pt-4">
           <a href="/" className="text-primary hover:text-primary-dim font-light text-sm">
