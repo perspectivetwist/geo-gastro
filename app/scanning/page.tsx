@@ -88,7 +88,7 @@ function ScanningContent() {
 
         // Store result and redirect
         sessionStorage.setItem('geo_scan_result', JSON.stringify(data))
-        router.push('/results')
+        router.push('/results?url=' + encodeURIComponent(url))
       } catch {
         setError('Verbindung fehlgeschlagen. Bitte versuche es erneut.')
       }
