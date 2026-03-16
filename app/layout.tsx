@@ -15,22 +15,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  robots: { index: false, follow: false },
-  title: "GEO Scanner – Wirst du von KI gefunden?",
+  robots: { index: true, follow: true },
+  title: "Restaurant-Ruf in ChatGPT | GEO Scanner für Gastronomie",
   description:
-    "Kostenloses Tool: prüfe ob deine Website in ChatGPT, Perplexity und Google AI Overviews sichtbar ist. GEO-Score in 20 Sekunden.",
+    "Kostenloser GEO-Scan: Wie gut ist dein Restaurant-Ruf in ChatGPT, Perplexity und Google AI sichtbar?",
   openGraph: {
-    title: "GEO Scanner – Wirst du von KI gefunden?",
+    title: "Restaurant-Ruf in ChatGPT | GEO Scanner für Gastronomie",
     description:
-      "GEO-Score kostenlos messen. Finde heraus wie sichtbar deine Website für KI-Suchmaschinen ist.",
-    url: "https://geo-transformer.vercel.app",
-    siteName: "GEO Scanner",
+      "Kostenloser GEO-Scan: Wie gut ist dein Restaurant-Ruf in ChatGPT, Perplexity und Google AI sichtbar?",
+    url: "https://geo-gastro.vercel.app",
+    siteName: "GEO Gastro Scanner",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "GEO Scanner – KI-Sichtbarkeit prüfen",
-    description: "Kostenloser GEO-Score für deine Website.",
+    title: "Restaurant-Ruf in ChatGPT | GEO Scanner für Gastronomie",
+    description: "Kostenloser GEO-Scan: Wie gut ist dein Restaurant-Ruf in ChatGPT, Perplexity und Google AI sichtbar?",
   },
 };
 

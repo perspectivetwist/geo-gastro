@@ -26,18 +26,18 @@ export default function Home() {
 
           <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 mb-12 sm:mb-20">
             <span className="w-2.5 h-2.5 rounded-full bg-[#A8E6A3]" />
-            <span className="text-base font-light text-gray-300">&Uuml;ber 10.000 Websites auf KI-Sichtbarkeit gepr&uuml;ft</span>
+            <span className="text-base font-light text-gray-300">&Uuml;ber 10.000 Restaurants auf KI-Reputation gepr&uuml;ft</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-10 sm:mb-16 leading-tight">
-            Nennt ChatGPT dich<br />
+            Kennt ChatGPT den Ruf<br />
             <span className="text-primary">
-              oder deine Konkurrenz?
+              deines Restaurants?
             </span>
           </h1>
 
           <p className="text-base sm:text-lg font-light text-gray-300 mb-10 max-w-xl mx-auto">
-            Wenn jemand in ChatGPT nach deiner Dienstleistung fragt, erscheinst du in der Antwort?
+            Bewertungen, Erw&auml;hnungen, Profil — scan deinen digitalen Ruf in der KI-Welt.
           </p>
 
           <UrlInputForm />
@@ -74,7 +74,7 @@ export default function Home() {
           So funktioniert&apos;s
         </h2>
         <p className="text-base font-light text-gray-300 text-center mb-12">
-          Drei Schritte zu deinem GEO-Report.
+          Drei Schritte zum GEO-Report f&uuml;r dein Restaurant.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[
@@ -122,14 +122,14 @@ export default function Home() {
           F&uuml;r wen ist der GEO Scanner?
         </h2>
         <p className="text-base font-light text-gray-300 text-center mb-12">
-          Jeder, der von KI-Suchmaschinen gefunden werden will.
+          Jeder in der Gastronomie, der von KI-Suchmaschinen empfohlen werden will.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
-            { icon: Building2, title: 'Agenturen & Berater', desc: 'Zeig deinen Kunden mit einem Score, warum GEO wichtig ist. Perfekt als Einstieg ins Beratungsgespr\u00e4ch.' },
-            { icon: Briefcase, title: 'KMUs & Mittelstand', desc: 'Verstehe in 20 Sekunden, ob dein Unternehmen von KI empfohlen wird, wenn Kunden nach deiner Leistung fragen.' },
-            { icon: PenTool, title: 'Content Creator & Blogger', desc: 'Finde heraus, ob deine Inhalte so strukturiert sind, dass KI sie als Quelle zitiert.' },
-            { icon: Users, title: 'SEO-Teams & Freelancer', desc: 'Erg\u00e4nze dein SEO-Toolkit um die GEO-Perspektive. Entdecke Optimierungspotenziale, die klassische Tools \u00fcbersehen.' },
+            { icon: Building2, title: 'Restaurant-Besitzer', desc: 'Verstehe in 20 Sekunden, ob dein Restaurant von ChatGPT empfohlen wird, wenn G\u00e4ste nach einem guten Lokal fragen.' },
+            { icon: Briefcase, title: 'Caf\u00e9s & Bistros', desc: 'Auch kleine Betriebe brauchen KI-Sichtbarkeit. Finde heraus, ob dein digitaler Ruf f\u00fcr KI-Empfehlungen reicht.' },
+            { icon: PenTool, title: 'Gastro-Berater & Agenturen', desc: 'Zeig deinen Kunden mit einem Score, warum digitaler Ruf in der KI-Welt entscheidend ist.' },
+            { icon: Users, title: 'Hotel-Restaurants & Caterer', desc: 'KI empfiehlt Restaurants mit starkem digitalem Ruf. Pr\u00fcfe ob dein Profil komplett und konsistent ist.' },
           ].map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
@@ -154,7 +154,7 @@ export default function Home() {
       {/* FOOTER CTA */}
       <div className="border-t border-white/10 py-16 sm:py-32 px-4 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">
-          Werden deine Konkurrenten von KI &ouml;fters genannt?
+          Kennt ChatGPT den Ruf deines Restaurants?
         </h2>
         <UrlInputForm />
       </div>

@@ -91,6 +91,19 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+        {/* ASD Hotmail-Prinzip */}
+        <div className="text-center text-xs text-gray-500 mt-8 pb-4">
+          <span>Erstellt mit </span>
+          <a
+            href="https://ai-shift-drift-psi.vercel.app?utm_source=report&utm_medium=footer&utm_campaign=hotmail&utm_content=geo-gastro"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-gray-300"
+          >
+            AI Shift Drift
+          </a>
+          <span> — Kostenloser KI-Sichtbarkeits-Scanner</span>
+        </div>
       </div>
     </footer>
   )
