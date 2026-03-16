@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   title: "Restaurant-Ruf in ChatGPT | GEO Scanner für Gastronomie",
   description:
-    "Kostenloser GEO-Scan: Wie gut ist dein Restaurant-Ruf in ChatGPT, Perplexity und Google AI sichtbar?",
+    "Kostenloser GEO-Scan für die Gastronomie: Wie gut ist dein Restaurant-Ruf in ChatGPT, Perplexity und Google AI sichtbar?",
   openGraph: {
     title: "Restaurant-Ruf in ChatGPT | GEO Scanner für Gastronomie",
     description:
-      "Kostenloser GEO-Scan: Wie gut ist dein Restaurant-Ruf in ChatGPT, Perplexity und Google AI sichtbar?",
+      "Kostenloser GEO-Scan für die Gastronomie: Wie gut ist dein Restaurant-Ruf in ChatGPT, Perplexity und Google AI sichtbar?",
     url: "https://geo-gastro.vercel.app",
     siteName: "GEO Gastro Scanner",
     type: "website",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Restaurant-Ruf in ChatGPT | GEO Scanner für Gastronomie",
-    description: "Kostenloser GEO-Scan: Wie gut ist dein Restaurant-Ruf in ChatGPT, Perplexity und Google AI sichtbar?",
+    description: "Kostenloser GEO-Scan für die Gastronomie: Wie gut ist dein Restaurant-Ruf in ChatGPT, Perplexity und Google AI sichtbar?",
   },
 };
 
