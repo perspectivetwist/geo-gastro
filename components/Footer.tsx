@@ -2,15 +2,6 @@ import Link from 'next/link'
 
 const ecosystem = [
   {
-    label: "AI-Gastro-Hub",
-    color: "#FF006E",
-    gradient: "linear-gradient(135deg, #FFB432 0%, #FF3CAC 50%, #FF2D78 100%)",
-    dotBg: "linear-gradient(135deg, #FFB432 0%, #FF3CAC 50%, #FF2D78 100%)",
-    dotShadow: "0 0 8px 2px rgba(255,180,50,0.4)",
-    desc: "AI-Readiness für die Gastronomie",
-    url: "https://ai-gastro-hub.vercel.app/",
-  },
-  {
     label: "Wake | AEO",
     color: "#6366f1",
     dotBg: "#6366f1",
