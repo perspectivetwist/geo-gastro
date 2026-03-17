@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  verification: { other: { 'msvalidate.01': '4238BAC83D0A84184DB5C8AEF5C3CE14' } },
   robots: { index: true, follow: true },
   title: "Restaurant-Ruf in ChatGPT | GEO Scanner für Gastronomie",
   description:
