@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { trackEmailGate } from '@/lib/gtag'
 
 interface Props {
   primaryColor: string
@@ -44,6 +45,7 @@ export default function EmailGate({ primaryColor, scannerSource, url, onUnlock }
     } catch {
       // Silent fail
     }
+    trackEmailGate('submitted')
     onUnlock()
   }
 

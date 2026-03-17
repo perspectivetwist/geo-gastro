@@ -9,6 +9,7 @@ import IndustryRanking from '@/components/IndustryRanking'
 import EmailGate from '@/components/EmailGate'
 import ActionPlan from '@/components/ActionPlan'
 import CrossSell from '@/components/CrossSell'
+import { trackScanComplete, trackEmailGate } from '@/lib/gtag'
 
 function ResultsContent() {
   const router = useRouter()
@@ -31,9 +32,12 @@ function ResultsContent() {
     try {
       const data: GeoAnalysis = JSON.parse(cached)
       setResult(data)
+      trackScanComplete(data.url, data.score.total)
     } catch {
       router.push('/')
     }
+
+    if (!unlocked) trackEmailGate('shown')
   }, [router])
 
   if (!result) {

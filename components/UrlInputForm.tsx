@@ -2,6 +2,7 @@
 
 import { useState, useSyncExternalStore } from 'react'
 import { useRouter } from 'next/navigation'
+import { trackScanStart } from '@/lib/gtag'
 
 // Shared active scans state — all UrlInputForm instances show the same number
 let sharedScans = Math.floor(Math.random() * 10) + 3
@@ -76,6 +77,7 @@ export default function UrlInputForm() {
       return
     }
 
+    trackScanStart(trimmed)
     router.push(`/scanning?url=${encodeURIComponent(trimmed)}`)
   }
 
