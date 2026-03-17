@@ -54,7 +54,7 @@ export default function EmailGate({ primaryColor, scannerSource, url, onUnlock }
           {!showInput ? (
             <div className="flex items-center justify-between gap-4">
               <p className="text-sm text-white font-medium">
-                Dein vollständiger Aktionsplan — kostenlos, keine Kreditkarte
+                Dein vollständiger Aktionsplan, kostenlos, keine Kreditkarte
               </p>
               <button
                 onClick={() => setShowInput(true)}

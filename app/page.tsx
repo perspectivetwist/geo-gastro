@@ -32,12 +32,12 @@ export default function Home() {
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-10 sm:mb-16 leading-tight">
             Dein Restaurant-Ruf in der KI-Welt{' '}
             <span className="text-primary">
-              &mdash; jetzt messen
+              jetzt messen
             </span>
           </h1>
 
           <p className="text-base sm:text-lg font-light text-gray-300 mb-10 max-w-xl mx-auto">
-            Kostenloser GEO-Scan: Pr&uuml;fe wie ChatGPT, Perplexity und Google AI deinen Ruf bewerten &mdash; Bewertungen, Erw&auml;hnungen, Profil.
+            Kostenloser GEO-Scan: Pr&uuml;fe wie ChatGPT, Perplexity und Google AI deinen Ruf bewerten. Bewertungen, Erw&auml;hnungen, Profil.
           </p>
 
           <UrlInputForm />

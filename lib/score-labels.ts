@@ -18,7 +18,7 @@ export function getScoreBand(score: number): { label: string; color: string; des
     return {
       label: 'Ausbaufähig',
       color: '#F59E0B',
-      description: 'KI-Suchmaschinen finden dich teilweise – mit wenigen Änderungen geht mehr.',
+      description: 'KI-Suchmaschinen finden dich teilweise, mit wenigen Änderungen geht mehr.',
     }
   }
   if (score >= 20) {

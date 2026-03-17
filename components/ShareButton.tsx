@@ -12,7 +12,7 @@ export default function ShareButton({ score, url }: ShareButtonProps) {
   const [copied, setCopied] = useState(false)
 
   const handleShare = async () => {
-    const text = `Mein GEO-Score: ${score}/100 – ${url} – Teste auch deine Website: geo-transformer.vercel.app`
+    const text = `Mein GEO-Score: ${score}/100 - ${url} - Teste auch deine Website: geo-transformer.vercel.app`
 
     try {
       await navigator.clipboard.writeText(text)

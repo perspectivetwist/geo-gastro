@@ -6,7 +6,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react'
 const resultsFaq = [
   {
     question: 'Was bedeutet mein GEO-Score?',
-    answer: 'Der GEO-Score (0–100) zeigt, wie gut KI-Suchmaschinen deine Website als Quelle verwenden können. Je höher der Score, desto wahrscheinlicher wirst du von ChatGPT, Perplexity und Google AI Overviews zitiert.',
+    answer: 'Der GEO-Score (0-100) zeigt, wie gut KI-Suchmaschinen deine Website als Quelle verwenden können. Je höher der Score, desto wahrscheinlicher wirst du von ChatGPT, Perplexity und Google AI Overviews zitiert.',
   },
   {
     question: 'Wie kann ich meinen Score verbessern?',
@@ -14,7 +14,7 @@ const resultsFaq = [
   },
   {
     question: 'Wie oft sollte ich scannen?',
-    answer: 'Nach jeder größeren Content-Änderung. Idealerweise alle 2–4 Wochen, um den Fortschritt zu messen.',
+    answer: 'Nach jeder größeren Content-Änderung. Idealerweise alle 2-4 Wochen, um den Fortschritt zu messen.',
   },
   {
     question: 'Wird meine URL gespeichert?',

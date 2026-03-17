@@ -25,12 +25,12 @@ export default function JsonLdSchema() {
         "name": "Verliere ich wirklich Gäste durch KI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ja — still und leise. Wenn jemand ChatGPT fragt \"Welches italienische Restaurant ist gut in München-Schwabing?\" und dein Restaurant nicht in der Antwort erscheint, existierst du für diesen potenziellen Gast nicht. Das passiert heute schon millionenfach täglich."
+          "text": "Ja, still und leise. Wenn jemand ChatGPT fragt \"Welches italienische Restaurant ist gut in München-Schwabing?\" und dein Restaurant nicht in der Antwort erscheint, existierst du für diesen potenziellen Gast nicht. Das passiert heute schon millionenfach täglich."
         }
       },
       {
         "@type": "Question",
-        "name": "Mein Restaurant läuft gut — warum soll ich mir Sorgen machen?",
+        "name": "Mein Restaurant läuft gut. Warum soll ich mir Sorgen machen?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Weil Google-Rankings und KI-Sichtbarkeit zwei verschiedene Systeme sind. Dein Restaurant kann auf Seite 1 bei Google stehen und trotzdem von ChatGPT, Perplexity & Co. komplett ignoriert werden. KI zitiert nach anderen Regeln."
@@ -41,7 +41,7 @@ export default function JsonLdSchema() {
         "name": "Was macht der GEO Scanner genau?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Er analysiert deine Restaurant-Website auf 5 Signale die KI-Assistenten nutzen um Quellen auszuwählen: Struktur, Schema-Daten, Fakten, Expertise-Signale und technische Zugänglichkeit. Du bekommst einen Score von 0–100 und siehst wo dein Restaurant steht."
+          "text": "Er analysiert deine Restaurant-Website auf 5 Signale die KI-Assistenten nutzen um Quellen auszuwählen: Struktur, Schema-Daten, Fakten, Expertise-Signale und technische Zugänglichkeit. Du bekommst einen Score von 0-100 und siehst wo dein Restaurant steht."
         }
       },
       {
@@ -49,7 +49,7 @@ export default function JsonLdSchema() {
         "name": "Was ist der Unterschied zu SEO?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SEO optimiert für Google-Klicks. GEO optimiert dafür, dass KI-Assistenten dein Restaurant als Quelle zitieren. Beides ist wichtig — aber es sind verschiedene Spiele mit verschiedenen Regeln."
+          "text": "SEO optimiert für Google-Klicks. GEO optimiert dafür, dass KI-Assistenten dein Restaurant als Quelle zitieren. Beides ist wichtig, aber es sind verschiedene Spiele mit verschiedenen Regeln."
         }
       },
       {
@@ -57,12 +57,12 @@ export default function JsonLdSchema() {
         "name": "Was bedeutet mein GEO-Score?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Er zeigt wie wahrscheinlich es ist, dass KI-Assistenten dein Restaurant als vertrauenswürdige Quelle erkennen. Unter 50: dringende Baustellen. 50–75: Potenzial vorhanden. Über 75: gut aufgestellt."
+          "text": "Er zeigt wie wahrscheinlich es ist, dass KI-Assistenten dein Restaurant als vertrauenswürdige Quelle erkennen. Unter 50: dringende Baustellen. 50-75: Potenzial vorhanden. Über 75: gut aufgestellt."
         }
       },
       {
         "@type": "Question",
-        "name": "Ich habe schon SEO — warum brauche ich das noch?",
+        "name": "Ich habe schon SEO. Warum brauche ich das noch?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Weil 58% der Nutzer KI bereits statt Google nutzen für Restaurant- und Servicefindung (Capgemini 2025). SEO allein reicht nicht mehr. GEO ist die nächste Schicht."
@@ -73,7 +73,7 @@ export default function JsonLdSchema() {
         "name": "Ist das auch für kleine Restaurants sinnvoll?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Gerade dann. Große Ketten werden von KI oft automatisch genannt. Kleine und mittlere Gastronomiebetriebe müssen aktiv die richtigen Signale setzen — sonst werden sie übergangen."
+          "text": "Gerade dann. Große Ketten werden von KI oft automatisch genannt. Kleine und mittlere Gastronomiebetriebe müssen aktiv die richtigen Signale setzen, sonst werden sie übergangen."
         }
       },
       {
@@ -81,7 +81,7 @@ export default function JsonLdSchema() {
         "name": "Was mache ich mit dem Report?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Du bekommst konkrete Aufgaben pro Bereich — ohne Fachbegriffe. Entweder selbst umsetzen oder deinem Webentwickler schicken. Die meisten Fixes sind in 1–2 Stunden erledigt."
+          "text": "Du bekommst konkrete Aufgaben pro Bereich, ohne Fachbegriffe. Entweder selbst umsetzen oder deinem Webentwickler schicken. Die meisten Fixes sind in 1-2 Stunden erledigt."
         }
       }
     ]
