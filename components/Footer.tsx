@@ -3,9 +3,9 @@ import Link from 'next/link'
 const ecosystem = [
   {
     label: "AI-Gastro-Hub",
-    color: "#FF006E",
-    dotBg: "#FF006E",
-    dotShadow: "0 0 8px 2px rgba(255,0,110,0.4)",
+    gradient: "linear-gradient(135deg, #FFB432 0%, #FF3CAC 50%, #FF2D78 100%)",
+    dotBg: "linear-gradient(135deg, #FFB432, #FF3CAC)",
+    dotShadow: "0 0 8px 2px rgba(255,60,172,0.4)",
     desc: "AI-Readiness für die Gastronomie",
     url: "https://ai-gastro-hub.vercel.app/",
   },
@@ -61,7 +61,11 @@ export default function Footer() {
                 <div>
                   <div
                     className="text-xs tracking-widest uppercase font-semibold"
-                    style={{ color: item.color }}
+                    style={
+                      'gradient' in item
+                        ? { backgroundImage: item.gradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }
+                        : { color: item.color }
+                    }
                   >
                     {item.label}
                   </div>
