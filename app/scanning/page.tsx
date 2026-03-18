@@ -64,7 +64,7 @@ function ScanningContent() {
     return () => clearInterval(interval)
   }, [])
 
-  // Run scan
+  // Run scan with minimum 15s display time
   useEffect(() => {
     if (!url) {
       setError('Keine URL angegeben')
@@ -72,12 +72,17 @@ function ScanningContent() {
     }
 
     async function runScan() {
+      const minDelay = new Promise(resolve => setTimeout(resolve, 15000))
+
       try {
-        const res = await fetch('/api/scan', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: decodeURIComponent(url) }),
-        })
+        const [res] = await Promise.all([
+          fetch('/api/scan', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: decodeURIComponent(url) }),
+          }),
+          minDelay,
+        ])
 
         const data = await res.json()
 
