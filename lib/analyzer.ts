@@ -93,42 +93,26 @@ Für actionPlan: genau 5 Einträge (einer pro Dimension), in der Reihenfolge: Ma
     language: string
   }
 
-  let parsed: ParsedResponse | null = null
-  let lastError: Error | null = null
+  const message = await anthropic.messages.create({
+    model: 'claude-haiku-4-5-20251001',
+    max_tokens: 2048,
+    messages: [
+      { role: 'user', content: prompt },
+    ],
+  })
 
-  for (let attempt = 0; attempt < 2; attempt++) {
-    try {
-      const message = await anthropic.messages.create({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 2048,
-        messages: [
-          { role: 'user', content: prompt },
-        ],
-      })
+  const responseText = message.content
+    .filter((block): block is Anthropic.TextBlock => block.type === 'text')
+    .map(block => block.text)
+    .join('')
 
-      const responseText = message.content
-        .filter((block): block is Anthropic.TextBlock => block.type === 'text')
-        .map(block => block.text)
-        .join('')
-
-      // JSON aus Response extrahieren (auch wenn in Markdown-Codeblock)
-      const jsonMatch = responseText.match(/\{[\s\S]*\}/)
-      if (!jsonMatch) {
-        throw new Error('Claude JSON-Parse Fehler: Kein JSON in Response gefunden')
-      }
-
-      parsed = JSON.parse(jsonMatch[0]) as ParsedResponse
-      lastError = null
-      break
-    } catch (err) {
-      lastError = err instanceof Error ? err : new Error('Unbekannter Fehler')
-      if (attempt === 0) continue
-    }
+  // JSON aus Response extrahieren (auch wenn in Markdown-Codeblock)
+  const jsonMatch = responseText.match(/\{[\s\S]*\}/)
+  if (!jsonMatch) {
+    throw new Error('Claude JSON-Parse Fehler: Kein JSON in Response gefunden')
   }
 
-  if (!parsed) {
-    throw lastError || new Error('Claude JSON-Parse Fehler')
-  }
+  const parsed = JSON.parse(jsonMatch[0]) as ParsedResponse
 
   // Validierung: Dimensionen in Range clampen
   const dims = {

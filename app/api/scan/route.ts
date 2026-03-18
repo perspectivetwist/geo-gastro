@@ -3,6 +3,8 @@ import { scrapeUrl } from '@/lib/scraper'
 import { analyzeGeo } from '@/lib/analyzer'
 import { checkRateLimit } from '@/lib/rate-limit'
 import { GeoAnalysis } from '@/types/geo'
+
+export const maxDuration = 60
 import { logScan } from '@/lib/notion'
 import { pingIndexNow } from '@/lib/indexnow'
 
@@ -106,8 +108,8 @@ export async function POST(request: NextRequest) {
       scannedAt: analysis.scannedAt,
     }
 
-    // Scan in Notion loggen
-    await logScan(analysis.url, analysis.score.total)
+    // Scan in Notion loggen (fire-and-forget)
+    logScan(analysis.url, analysis.score.total).catch(() => {})
 
     // IndexNow: Result-URL an Bing pushen (fire-and-forget)
     pingIndexNow(analysis.url)
@@ -118,7 +120,7 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unbekannter Fehler'
-    console.error('Scan error:', message)
+    console.error('Scan error:', message, error instanceof Error ? error.stack : '')
 
     if (message.includes('Jina.ai')) {
       return NextResponse.json(
@@ -127,7 +129,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    if (message.includes('Claude') || message.includes('JSON-Parse')) {
+    if (message.includes('Claude') || message.includes('JSON-Parse') || message.includes('Anthropic') || message.includes('api_key') || message.includes('authentication')) {
       return NextResponse.json(
         { error: 'KI-Analyse fehlgeschlagen. Bitte erneut versuchen.' },
         { status: 503 }
@@ -135,7 +137,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: 'Interner Fehler. Bitte erneut versuchen.' },
+      { error: `Interner Fehler. Bitte erneut versuchen.` },
       { status: 500 }
     )
   }
