@@ -91,6 +91,11 @@ function ResultsContent() {
             Erstellt mit AI Shift Drift | Kostenloser KI-Scan f&uuml;r Restaurants
           </a>
         </div>
+        <div className="mt-6 pt-4 border-t border-white/5 text-center">
+          <a href="https://ai-gastro-hub.vercel.app/newsroom" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-600 hover:text-gray-400 transition">
+            🍳 KI-Gastro-Newsroom — Was KI f&uuml;r Restaurants bedeutet
+          </a>
+        </div>
       </div>
 
       {!isUnlocked && (
