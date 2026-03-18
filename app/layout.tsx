@@ -49,6 +49,21 @@ export default function RootLayout({
       >
         <GoogleAnalytics />
         <JsonLdSchema />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "AI Shift Drift",
+              "url": "https://ai-gastro-hub.vercel.app",
+              "sameAs": [
+                "https://github.com/perspectivetwist",
+                "https://www.crunchbase.com/organization/ai-shift-drift"
+              ]
+            })
+          }}
+        />
         {children}
         <Footer />
         <Analytics />
