@@ -118,12 +118,18 @@ Für actionPlan: genau 5 Einträge (einer pro Dimension), in der Reihenfolge: Ma
     .join('')
 
   // JSON aus Response extrahieren (auch wenn in Markdown-Codeblock)
-  const jsonMatch = responseText.match(/\{[\s\S]*\}/)
+  const cleanJson = responseText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
+  const jsonMatch = cleanJson.match(/\{[\s\S]*\}/)
   if (!jsonMatch) {
     throw new Error('Claude JSON-Parse Fehler: Kein JSON in Response gefunden')
   }
 
-  const parsed = JSON.parse(jsonMatch[0]) as ParsedResponse
+  let parsed: ParsedResponse
+  try {
+    parsed = JSON.parse(jsonMatch[0]) as ParsedResponse
+  } catch {
+    throw new Error('Claude JSON-Parse Fehler: Ungültiges JSON')
+  }
 
   // Validierung: Dimensionen in Range clampen
   const dims = {
