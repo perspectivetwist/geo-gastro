@@ -3,8 +3,13 @@ import { ScrapedContent, GeoAnalysis, GeoScore, DimensionAction, GeoActionPlan }
 
 const MAX_CONTENT_FOR_CLAUDE = 3000 // Denial-of-Wallet Schutz
 
+function cleanApiKey(key: string | undefined): string | undefined {
+  if (!key) return undefined
+  return key.replace(/^["']+|["']+$/g, '').replace(/\\n/g, '').trim()
+}
+
 const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY?.trim(),
+  apiKey: cleanApiKey(process.env.ANTHROPIC_API_KEY),
 })
 
 function sanitizeContent(text: string): string {

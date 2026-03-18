@@ -4,18 +4,24 @@ const SCRAPE_TIMEOUT_MS = 20000
 const AUTH_TIMEOUT_MS = 8000
 const MAX_CONTENT_LENGTH = 10000
 
+function cleanEnvKey(key: string | undefined): string | undefined {
+  if (!key) return undefined
+  return key.replace(/^["']+|["']+$/g, '').replace(/\\n/g, '').trim()
+}
+
 async function fetchJina(targetUrl: string, useAuth: boolean): Promise<Response> {
   const jinaUrl = `https://r.jina.ai/${targetUrl}`
   const headers: Record<string, string> = { 'Accept': 'text/plain' }
-  if (useAuth && process.env.JINA_API_KEY) {
-    headers['Authorization'] = `Bearer ${process.env.JINA_API_KEY.trim()}`
+  const jinaKey = cleanEnvKey(process.env.JINA_API_KEY)
+  if (useAuth && jinaKey) {
+    headers['Authorization'] = `Bearer ${jinaKey}`
   }
   const timeout = useAuth ? AUTH_TIMEOUT_MS : SCRAPE_TIMEOUT_MS
   return fetch(jinaUrl, { headers, signal: AbortSignal.timeout(timeout) })
 }
 
 async function fetchWithFallbacks(url: string): Promise<Response> {
-  const hasKey = !!process.env.JINA_API_KEY
+  const hasKey = !!cleanEnvKey(process.env.JINA_API_KEY)
   const urls = [url]
   if (url.startsWith('https://')) {
     urls.push(url.replace('https://', 'http://'))
