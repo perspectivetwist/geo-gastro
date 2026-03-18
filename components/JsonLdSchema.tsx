@@ -30,6 +30,14 @@ export default function JsonLdSchema() {
       },
       {
         "@type": "Question",
+        "name": "Warum gibt es den GEO Scanner und warum jetzt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Weil Restaurants online unsichtbar werden, ohne es zu merken. ChatGPT empfiehlt keine Restaurants, die es nicht kennt. Es empfiehlt Betriebe mit starkem digitalem Ruf: Bewertungen, Erwähnungen, Branchenprofile. 63% aller Websites erhalten bereits Traffic von KI-Suchmaschinen (Ahrefs 2025). 58% der Konsumenten haben Google durch KI-Tools ersetzt für Produkt- und Servicesuche (Capgemini 2025). +527% Anstieg KI-generierter Website-Referrals in nur 5 Monaten (Previsible Jan-Mai 2025). 800 Mio. wöchentliche ChatGPT-Nutzer, Stand Ende 2025 (OpenAI). Kombination aus Struktur + Statistiken = stärkste KI-Sichtbarkeits-Intervention (Princeton GEO-Bench Paper). Der GEO Scanner zeigt in Sekunden wie stark der digitale Ruf deines Restaurants in den Augen von KI-Systemen ist."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Mein Restaurant läuft gut. Warum soll ich mir Sorgen machen?",
         "acceptedAnswer": {
           "@type": "Answer",
