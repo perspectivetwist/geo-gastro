@@ -1,23 +1,50 @@
 import { ScrapedContent } from '@/types/geo'
 
-const SCRAPE_TIMEOUT_MS = 10000
+const SCRAPE_TIMEOUT_MS = 20000
 const MAX_CONTENT_LENGTH = 10000
 
-export async function scrapeUrl(url: string): Promise<ScrapedContent> {
-  const jinaUrl = `https://r.jina.ai/${url}`
+async function fetchViaJina(targetUrl: string): Promise<Response> {
+  const jinaUrl = `https://r.jina.ai/${targetUrl}`
+  const headers: Record<string, string> = { 'Accept': 'text/plain' }
+  if (process.env.JINA_API_KEY) {
+    headers['Authorization'] = `Bearer ${process.env.JINA_API_KEY}`
+  }
+  return fetch(jinaUrl, {
+    headers,
+    signal: AbortSignal.timeout(SCRAPE_TIMEOUT_MS),
+  })
+}
 
+export async function scrapeUrl(url: string): Promise<ScrapedContent> {
   let response: Response
   try {
-    response = await fetch(jinaUrl, {
-      headers: {
-        'Authorization': `Bearer ${process.env.JINA_API_KEY}`,
-        'Accept': 'text/plain',
-      },
-      signal: AbortSignal.timeout(SCRAPE_TIMEOUT_MS),
-    })
+    response = await fetchViaJina(url)
+
+    // HTTPS→HTTP Fallback: Wenn Jina 422 gibt (SSL-Fehler), mit http:// versuchen
+    if (!response.ok && response.status === 422 && url.startsWith('https://')) {
+      const httpUrl = url.replace('https://', 'http://')
+      response = await fetchViaJina(httpUrl)
+    }
+
+    // Auth-Fallback: Wenn 401 (ungültiger Key), ohne Auth-Header versuchen
+    if (!response.ok && response.status === 401 && process.env.JINA_API_KEY) {
+      const jinaUrl = `https://r.jina.ai/${url}`
+      response = await fetch(jinaUrl, {
+        headers: { 'Accept': 'text/plain' },
+        signal: AbortSignal.timeout(SCRAPE_TIMEOUT_MS),
+      })
+      // 401-Fallback + HTTPS→HTTP Fallback kombiniert
+      if (!response.ok && response.status === 422 && url.startsWith('https://')) {
+        const httpUrl = url.replace('https://', 'http://')
+        response = await fetch(`https://r.jina.ai/${httpUrl}`, {
+          headers: { 'Accept': 'text/plain' },
+          signal: AbortSignal.timeout(SCRAPE_TIMEOUT_MS),
+        })
+      }
+    }
   } catch (err) {
     if (err instanceof DOMException && err.name === 'TimeoutError') {
-      throw new Error('Jina.ai Timeout: Website antwortet nicht innerhalb von 10 Sekunden')
+      throw new Error('Jina.ai Timeout: Website antwortet nicht innerhalb von 20 Sekunden')
     }
     throw new Error(`Jina.ai Fehler: ${err instanceof Error ? err.message : 'Verbindung fehlgeschlagen'}`)
   }
