@@ -8,7 +8,7 @@ async function fetchJina(targetUrl: string, useAuth: boolean): Promise<Response>
   const jinaUrl = `https://r.jina.ai/${targetUrl}`
   const headers: Record<string, string> = { 'Accept': 'text/plain' }
   if (useAuth && process.env.JINA_API_KEY) {
-    headers['Authorization'] = `Bearer ${process.env.JINA_API_KEY}`
+    headers['Authorization'] = `Bearer ${process.env.JINA_API_KEY.trim()}`
   }
   const timeout = useAuth ? AUTH_TIMEOUT_MS : SCRAPE_TIMEOUT_MS
   return fetch(jinaUrl, { headers, signal: AbortSignal.timeout(timeout) })
