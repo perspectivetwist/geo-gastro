@@ -166,48 +166,6 @@ export default function Home() {
         <UrlInputForm />
       </div>
 
-      {/* Ökosystem Footer */}
-      <footer className="relative max-w-5xl mx-auto px-6 pb-16" style={{ zIndex: 1 }}>
-        <div className="border-t pt-12" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
-          <div className="text-xs tracking-widest uppercase mb-8" style={{ color: "#888" }}>
-            Teil des AI-Shift-Drift &Ouml;kosystems
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="flex flex-col gap-4">
-              {[
-                { name: 'AI Shift Drift', desc: 'Das KI-\u00d6kosystem f\u00fcr die Gastronomie', url: 'https://ai-gastro-hub.vercel.app', color: '#FF006E' },
-                { name: 'Wake | AEO', desc: 'Wird dein Restaurant von ChatGPT zitiert?', url: 'https://aeo-gastro.vercel.app', color: '#6366f1' },
-                { name: 'Slipstream', desc: 'K\u00f6nnen G\u00e4ste via KI-Agenten reservieren?', url: 'https://agentready-gastro.vercel.app', color: '#FFE600' },
-                { name: 'Quantum', desc: 'Wie angreifbar ist dein Restaurant bei KI-Attacken?', url: 'https://aisecurity-gastro.vercel.app', color: '#FF1744' },
-              ].map((s) => (
-                <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
-                  <div className="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-1" style={{ background: s.color, boxShadow: `0 0 8px 2px ${s.color}66` }} />
-                  <div className="flex flex-col">
-                    <div className="text-xs tracking-widest uppercase font-semibold" style={{ color: s.color }}>{s.name}</div>
-                    <div className="text-xs mt-0.5" style={{ color: "#555" }}>{s.desc}</div>
-                  </div>
-                </a>
-              ))}
-            </div>
-            <div>
-              <a href="https://ai-gastro-hub.vercel.app/newsroom" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
-                <div className="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-1" style={{ background: "#FF3CAC", boxShadow: "0 0 8px 2px #FF3CAC66" }} />
-                <div className="flex flex-col">
-                  <div className="text-xs tracking-widest uppercase font-semibold" style={{ background: "linear-gradient(135deg, #FFB432 0%, #FF3CAC 50%, #FF2D78 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>KI-Gastro-Newsroom</div>
-                  <div className="text-xs mt-0.5" style={{ color: "#555" }}>Was KI f&uuml;r die Gastronomie bedeutet, jeden Montag neu</div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div className="flex flex-col md:flex-row justify-between gap-8">
-            <div className="flex gap-6">
-              <a href="https://ai-gastro-hub.vercel.app/impressum" target="_blank" rel="noopener noreferrer" className="text-sm hover:underline" style={{ color: "#888" }}>Impressum</a>
-              <a href="https://ai-gastro-hub.vercel.app/datenschutz" target="_blank" rel="noopener noreferrer" className="text-sm hover:underline" style={{ color: "#888" }}>Datenschutz</a>
-            </div>
-          </div>
-          <div className="mt-12 text-center text-xs" style={{ color: "#444" }}>&copy; 2026 Ein Service von AI-SHIFT-DRIFT</div>
-        </div>
-      </footer>
     </main>
   )
 }
