@@ -137,7 +137,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: `Interner Fehler: ${message.slice(0, 200)}` },
+      { error: 'Interner Fehler. Bitte erneut versuchen.' },
       { status: 500 }
     )
   }
