@@ -98,13 +98,19 @@ Für actionPlan: genau 5 Einträge (einer pro Dimension), in der Reihenfolge: Ma
     language: string
   }
 
-  const message = await anthropic.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 2048,
-    messages: [
-      { role: 'user', content: prompt },
-    ],
-  })
+  let message: Anthropic.Message
+  try {
+    message = await anthropic.messages.create({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 2048,
+      messages: [
+        { role: 'user', content: prompt },
+      ],
+    })
+  } catch (err) {
+    const errMsg = err instanceof Error ? err.message : String(err)
+    throw new Error(`Claude API Fehler: ${errMsg}`)
+  }
 
   const responseText = message.content
     .filter((block): block is Anthropic.TextBlock => block.type === 'text')
