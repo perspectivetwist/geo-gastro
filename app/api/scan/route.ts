@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { scrapeUrl } from '@/lib/scraper'
 import { analyzeGeo } from '@/lib/analyzer'
-import { checkRateLimit } from '@/lib/rate-limit'
+import { checkRateLimit, isCrawlerAuthorized } from '@/lib/rate-limit'
 import { GeoAnalysis } from '@/types/geo'
 
 export const maxDuration = 60
@@ -31,17 +31,24 @@ function isBlockedHost(hostname: string): boolean {
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate Limiting
+    // Crawler-Bypass oder Rate Limiting
+    const crawlerSecret = request.headers.get('x-crawler-secret')
+    const skipRateLimit = isCrawlerAuthorized(crawlerSecret)
+
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
       || request.headers.get('x-real-ip')
       || 'unknown'
-    const { allowed, remaining } = checkRateLimit(ip)
 
-    if (!allowed) {
-      return NextResponse.json(
-        { error: 'Zu viele Anfragen. Bitte in einer Stunde erneut versuchen.' },
-        { status: 429 }
-      )
+    let remaining = 999
+    if (!skipRateLimit) {
+      const rateCheck = checkRateLimit(ip)
+      remaining = rateCheck.remaining
+      if (!rateCheck.allowed) {
+        return NextResponse.json(
+          { error: 'Zu viele Anfragen. Bitte in einer Stunde erneut versuchen.' },
+          { status: 429 }
+        )
+      }
     }
 
     const body = await request.json() as { url: string }

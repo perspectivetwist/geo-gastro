@@ -3,6 +3,10 @@ const rateMap = new Map<string, { count: number; resetTime: number }>()
 const MAX_REQUESTS = 5
 const WINDOW_MS = 60 * 60 * 1000 // 1 Stunde
 
+export function isCrawlerAuthorized(secret: string | null): boolean {
+  return !!secret && !!process.env.CRAWLER_SECRET && secret === process.env.CRAWLER_SECRET
+}
+
 export function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
   const now = Date.now()
   const entry = rateMap.get(ip)

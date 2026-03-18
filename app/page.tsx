@@ -44,6 +44,13 @@ export default function Home() {
         </div>
       </div>
 
+      {/* DEFINITION */}
+      <section className="max-w-2xl mx-auto px-4 py-6 text-center">
+        <p className="text-sm text-gray-400 leading-relaxed">
+          Der GEO Scanner pr&uuml;ft kostenlos ob ChatGPT den Ruf deines Restaurants kennt &mdash; Bewertungen, Erw&auml;hnungen, Google-Profil. F&uuml;r lokale Gastronomiebetriebe in Deutschland.
+        </p>
+      </section>
+
       {/* STATS */}
       <div className="max-w-3xl mx-auto px-4 pt-8 pb-16 sm:pb-24">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 text-center">
