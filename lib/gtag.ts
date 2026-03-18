@@ -1,4 +1,4 @@
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
+export const GA_MEASUREMENT_ID = (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '').trim()
 
 declare global {
   interface Window {
@@ -8,6 +8,7 @@ declare global {
 
 export function pageview(url: string) {
   if (typeof window === 'undefined' || !GA_MEASUREMENT_ID) return
+  if (typeof window.gtag !== 'function') return
   window.gtag('config', GA_MEASUREMENT_ID, { page_path: url })
 }
 
@@ -18,6 +19,7 @@ export function event({ action, category, label, value }: {
   value?: number
 }) {
   if (typeof window === 'undefined' || !GA_MEASUREMENT_ID) return
+  if (typeof window.gtag !== 'function') return
   window.gtag('event', action, {
     event_category: category,
     event_label: label,
