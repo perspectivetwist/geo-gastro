@@ -158,6 +158,18 @@ export default function Home() {
         <LandingFaq />
       </div>
 
+      {/* Newsroom Link */}
+      <div className="max-w-3xl mx-auto px-4 py-6 text-center border-t border-white/5">
+        <a
+          href="https://ai-gastro-hub.vercel.app/newsroom"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-gray-500 hover:text-gray-300 transition"
+        >
+          🍳 KI-Gastro-Newsroom — Was KI f&uuml;r Restaurants bedeutet, jeden Montag neu
+        </a>
+      </div>
+
       {/* FOOTER CTA */}
       <div className="border-t border-white/10 py-16 sm:py-32 px-4 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">
