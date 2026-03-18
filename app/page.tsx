@@ -158,8 +158,16 @@ export default function Home() {
         <LandingFaq />
       </div>
 
+      {/* FOOTER CTA */}
+      <div className="border-t border-white/10 py-16 sm:py-32 px-4 text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">
+          Kennt ChatGPT den Ruf deines Restaurants?
+        </h2>
+        <UrlInputForm />
+      </div>
+
       {/* Newsroom Link */}
-      <div className="max-w-3xl mx-auto px-4 py-6 border-t border-white/5">
+      <div className="max-w-3xl mx-auto px-4 py-6 border-t" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
         <a href="https://ai-gastro-hub.vercel.app/newsroom" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
           <div className="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-1" style={{ background: "#FF3CAC", boxShadow: "0 0 8px 2px #FF3CAC66" }} />
           <div className="flex flex-col">
@@ -167,14 +175,6 @@ export default function Home() {
             <div className="text-xs mt-0.5" style={{ color: "#555" }}>Was KI f&uuml;r die Gastronomie bedeutet, jeden Montag neu</div>
           </div>
         </a>
-      </div>
-
-      {/* FOOTER CTA */}
-      <div className="border-t border-white/10 py-16 sm:py-32 px-4 text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">
-          Kennt ChatGPT den Ruf deines Restaurants?
-        </h2>
-        <UrlInputForm />
       </div>
     </main>
   )
