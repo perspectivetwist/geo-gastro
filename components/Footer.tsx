@@ -76,6 +76,30 @@ export default function Footer() {
               </a>
             ))}
           </div>
+
+          {/* Newsroom */}
+          <a
+            href="https://ai-gastro-hub.vercel.app/newsroom"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-3 transition-opacity duration-200 hover:opacity-80 mt-6 pt-6 border-t border-white/5"
+          >
+            <div
+              className="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-1.5"
+              style={{ background: "#FF3CAC", boxShadow: "0 0 8px 2px #FF3CAC66" }}
+            />
+            <div>
+              <div
+                className="text-xs tracking-widest uppercase font-semibold"
+                style={{ backgroundImage: "linear-gradient(135deg, #FFB432 0%, #FF3CAC 50%, #FF2D78 100%)", WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+              >
+                KI-Gastro-Newsroom
+              </div>
+              <div className="text-xs mt-0.5" style={{ color: "#555" }}>
+                Was KI für die Gastronomie bedeutet, jeden Montag neu
+              </div>
+            </div>
+          </a>
         </div>
 
         {/* Impressum / Datenschutz / Copyright */}
