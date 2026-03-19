@@ -45,62 +45,36 @@ export default function Footer() {
           <div className="text-xs tracking-widest uppercase mb-6" style={{ color: "#888", textShadow: "0 0 12px rgba(255,255,255,0.15)" }}>
             Teil des AI-Gastro-Hub Ökosystems
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="flex flex-col gap-4">
-              {ecosystem.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 transition-opacity duration-200 hover:opacity-80"
-                >
-                  <div
-                    className="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-1.5"
-                    style={{ background: item.dotBg, boxShadow: item.dotShadow }}
-                  />
-                  <div>
-                    <div
-                      className="text-xs tracking-widest uppercase font-semibold"
-                      style={
-                        'gradient' in item
-                          ? { backgroundImage: item.gradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }
-                          : { color: item.color }
-                      }
-                    >
-                      {item.label}
-                    </div>
-                    <div className="text-xs mt-0.5" style={{ color: "#555" }}>
-                      {item.desc}
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-            <div>
+          <div className="flex flex-col gap-4">
+            {ecosystem.map((item) => (
               <a
-                href="https://ai-gastro-hub.vercel.app/newsroom"
+                key={item.label}
+                href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-3 transition-opacity duration-200 hover:opacity-80"
               >
                 <div
                   className="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-1.5"
-                  style={{ background: "#FF3CAC", boxShadow: "0 0 8px 2px #FF3CAC66" }}
+                  style={{ background: item.dotBg, boxShadow: item.dotShadow }}
                 />
                 <div>
                   <div
                     className="text-xs tracking-widest uppercase font-semibold"
-                    style={{ backgroundImage: "linear-gradient(135deg, #FFB432 0%, #FF3CAC 50%, #FF2D78 100%)", WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+                    style={
+                      'gradient' in item
+                        ? { backgroundImage: item.gradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }
+                        : { color: item.color }
+                    }
                   >
-                    KI-Gastro-Newsroom
+                    {item.label}
                   </div>
                   <div className="text-xs mt-0.5" style={{ color: "#555" }}>
-                    Was KI für die Gastronomie bedeutet, jeden Montag neu
+                    {item.desc}
                   </div>
                 </div>
               </a>
-            </div>
+            ))}
           </div>
         </div>
 
