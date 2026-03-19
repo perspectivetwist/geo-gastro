@@ -9,6 +9,7 @@ import IndustryRanking from '@/components/IndustryRanking'
 import EmailGate from '@/components/EmailGate'
 import ActionPlan from '@/components/ActionPlan'
 import CrossSell from '@/components/CrossSell'
+import ShareButton from '@/components/ShareButton'
 import { trackScanComplete, trackEmailGate } from '@/lib/gtag'
 
 function ResultsContent() {
@@ -61,6 +62,8 @@ function ResultsContent() {
       <div className="max-w-3xl mx-auto px-4 py-8 space-y-6">
         <ScoreDisplay score={result.score} url={result.url} />
 
+        <ShareButton score={result.score.total} resultUrl={typeof window !== 'undefined' ? window.location.href : ''} />
+
         <IndustryRanking
           score={result.score.total}
           industry={result.industry || 'Websites allgemein'}
@@ -89,15 +92,6 @@ function ResultsContent() {
             className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
           >
             Erstellt mit AI Shift Drift | Kostenloser KI-Scan f&uuml;r Restaurants
-          </a>
-        </div>
-        <div className="mt-6 pt-4 border-t border-white/5">
-          <a href="https://ai-gastro-hub.vercel.app/newsroom" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
-            <div className="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-1" style={{ background: "#FF3CAC", boxShadow: "0 0 8px 2px #FF3CAC66" }} />
-            <div className="flex flex-col">
-              <div className="text-xs tracking-widest uppercase font-semibold" style={{ background: "linear-gradient(135deg, #FFB432 0%, #FF3CAC 50%, #FF2D78 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>KI-Gastro-Newsroom</div>
-              <div className="text-xs mt-0.5" style={{ color: "#555" }}>Was KI f&uuml;r die Gastronomie bedeutet, jeden Montag neu</div>
-            </div>
           </a>
         </div>
       </div>
