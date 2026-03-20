@@ -1,6 +1,6 @@
 const rateMap = new Map<string, { count: number; resetTime: number }>()
 
-const MAX_REQUESTS = 5
+const MAX_REQUESTS = 999999 // Rate Limit ausgesetzt
 const WINDOW_MS = 60 * 60 * 1000 // 1 Stunde
 
 export function isCrawlerAuthorized(secret: string | null): boolean {
