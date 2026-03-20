@@ -8,6 +8,7 @@ import ScoreDimensions from '@/components/ScoreDimensions'
 import IndustryRanking from '@/components/IndustryRanking'
 import EmailGate from '@/components/EmailGate'
 import ActionPlan from '@/components/ActionPlan'
+import KIZusammenfassung from '@/components/KIZusammenfassung'
 import CrossSell from '@/components/CrossSell'
 import ShareButton from '@/components/ShareButton'
 import { trackScanComplete, trackEmailGate } from '@/lib/gtag'
@@ -70,6 +71,8 @@ function ResultsContent() {
         />
 
         <ScoreDimensions score={result.score} />
+
+        <KIZusammenfassung kiSummary={result.kiSummary ?? null} isUnlocked={isUnlocked} />
 
         {result.actionPlan && (
           <ActionPlan actionPlan={result.actionPlan} isUnlocked={isUnlocked} />

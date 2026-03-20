@@ -3,6 +3,7 @@ import { scrapeUrl } from '@/lib/scraper'
 import { analyzeGeo } from '@/lib/analyzer'
 import { checkRateLimit, isCrawlerAuthorized } from '@/lib/rate-limit'
 import { GeoAnalysis } from '@/types/geo'
+import { generateKiSummary } from '@/lib/ki-summary'
 
 export const maxDuration = 60
 import { logScan } from '@/lib/notion'
@@ -102,6 +103,19 @@ export async function POST(request: NextRequest) {
     const scraped = await scrapeUrl(normalizedUrl)
     const analysis: GeoAnalysis = await analyzeGeo(scraped)
 
+    // KI-Zusammenfassung generieren (non-fatal)
+    let kiSummary = undefined
+    if (analysis.actionPlan) {
+      try {
+        const befunde = analysis.actionPlan.actions
+          .map(a => `${a.title}: ${a.topFix}`)
+          .join(' | ')
+        kiSummary = await generateKiSummary(analysis.url, befunde)
+      } catch (err) {
+        console.error('KI-Summary error (non-fatal):', err)
+      }
+    }
+
     const previewResponse = {
       url: analysis.url,
       score: analysis.score,
@@ -110,6 +124,7 @@ export async function POST(request: NextRequest) {
       summary: analysis.summary,
       recommendations: analysis.recommendations,
       actionPlan: analysis.actionPlan,
+      kiSummary,
       industry: analysis.industry,
       language: analysis.language,
       scannedAt: analysis.scannedAt,

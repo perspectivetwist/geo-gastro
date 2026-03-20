@@ -43,6 +43,10 @@ export interface GeoActionPlan {
   actions: DimensionAction[]
 }
 
+export interface KiSummary {
+  zusammenfassung: string
+}
+
 /** Vollständiges Analyse-Ergebnis von Claude Haiku */
 export interface GeoAnalysis {
   url: string
@@ -52,6 +56,7 @@ export interface GeoAnalysis {
   summary: string
   recommendations: string[]
   actionPlan?: GeoActionPlan
+  kiSummary?: KiSummary
   industry: string
   language: string
   scannedAt: string
