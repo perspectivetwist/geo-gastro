@@ -102,7 +102,7 @@ function ResultsContent() {
       {!isUnlocked && (
         <EmailGate
           primaryColor="#A8E6A3"
-          scannerSource="GEO"
+          scannerSource="gastro-geo"
           url={displayUrl}
           onUnlock={handleUnlock}
         />
