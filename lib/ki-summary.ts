@@ -39,12 +39,12 @@ export async function generateKiSummary(
 
   const message = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
-    max_tokens: 300,
-    system: 'Du bist ein KI-Berater für Restaurantbesitzer. Übersetze technische Scan-Befunde in einfache, direkte Sprache. Kein Tech-Jargon. 3-4 Sätze, max. 60 Wörter. Ton: direkt, konkret, leicht beunruhigend. Antworte NUR mit JSON, kein Text davor oder danach.',
+    max_tokens: 2048,
+    system: 'Du bist ein KI-Berater für Restaurantbesitzer. Übersetze technische Scan-Befunde in verständliche, direkte Sprache für Nicht-Techniker. Kein Tech-Jargon. Keine Fachbegriffe. KEINE Gedankenstriche (weder — noch –), nur Punkte und Kommas. 4 Absätze, je 2-3 Sätze, gesamt ca. 280-320 Wörter. Absatz 1: Was heute konkret passiert wenn ein Gast oder eine KI dieses Restaurant sucht, bildlich, spürbar. Absatz 2: Was das fürs Business bedeutet, konkret in Gästen, Tischen, Umsatz. Absatz 3: Wie es bei einem Restaurant aussieht das dieses Problem gelöst hat. Absatz 4: Was die technischen Befunde im Aktionsplan direkt darunter konkret beheben. Ton: ruhig, direkt, leicht beunruhigend. Kein Alarmismus. Kein Werbesprech. Antworte NUR mit einem flachen JSON Objekt: { "zusammenfassung": "Der gesamte Text als EIN String. Absätze getrennt durch \\n\\n." } — kein verschachteltes JSON, keine Extra-Keys.',
     messages: [
       {
         role: 'user',
-        content: `Restaurant: ${restaurantName} | Befunde: ${sanitizeInput(befunde)} | JSON: { "zusammenfassung": "3-4 Sätze: Was KI-Systeme über dieses Restaurant wissen — und was fehlt damit das Profil vollständig ist." }`,
+        content: `Restaurant: ${restaurantName} | Befunde: ${sanitizeInput(befunde)} | Antworte EXAKT in diesem Format: { "zusammenfassung": "Abs.1: Was KI-Systeme heute über dieses Restaurant wissen und was in ihrem Datenbild fehlt oder falsch ist.\\n\\nAbs.2: Was passiert wenn das KI-Profil unvollständig ist: welche Fragen KI nicht beantworten kann, welche Gäste das verliert.\\n\\nAbs.3: Wie ein vollständiges KI-Profil aussieht und was es für das Restaurant leistet.\\n\\nAbs.4: Welche konkreten Datenlücken der Aktionsplan direkt darunter schließt. Keine Gedankenstriche." }`,
       },
     ],
   })
@@ -54,11 +54,40 @@ export async function generateKiSummary(
     .map(block => block.text)
     .join('')
 
-  const match = responseText.match(/\{[\s\S]*\}/)
+  // Strip markdown code fences if present
+  const cleaned = responseText.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim()
+
+  const match = cleaned.match(/\{[\s\S]*\}/)
   if (!match) return null
 
-  const parsed = JSON.parse(match[0]) as KiSummary
-  if (!parsed.zusammenfassung || typeof parsed.zusammenfassung !== 'string') return null
+  try {
+    const raw = JSON.parse(match[0])
+    if (raw.zusammenfassung && typeof raw.zusammenfassung === 'string') {
+      return validateOutput({ zusammenfassung: raw.zusammenfassung })
+    }
+    const source = (raw.beratung as Record<string, unknown>) || raw
+    const paragraphs: string[] = []
+    for (let i = 1; i <= 6; i++) {
+      const val = source[`absatz_${i}`]
+      if (val && typeof val === 'string') paragraphs.push(val)
+    }
+    if (paragraphs.length > 0) {
+      return validateOutput({ zusammenfassung: paragraphs.join('\n\n') })
+    }
+  } catch {
+    const valueMatch = cleaned.match(/"zusammenfassung"\s*:\s*"([\s\S]*)"/)
+    if (valueMatch) {
+      return validateOutput({ zusammenfassung: valueMatch[1].replace(/\\n/g, '\n').replace(/\\"/g, '"') })
+    }
+    const paragraphs: string[] = []
+    for (let i = 1; i <= 6; i++) {
+      const absMatch = cleaned.match(new RegExp(`"absatz_${i}"\\s*:\\s*"([^"]*(?:\\\\.[^"]*)*)"`, 's'))
+      if (absMatch) paragraphs.push(absMatch[1].replace(/\\n/g, '\n').replace(/\\"/g, '"'))
+    }
+    if (paragraphs.length > 0) {
+      return validateOutput({ zusammenfassung: paragraphs.join('\n\n') })
+    }
+  }
 
-  return validateOutput(parsed)
+  return null
 }
