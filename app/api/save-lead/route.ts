@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
           parent: { database_id: dbId },
           properties: {
             'Email': { title: [{ text: { content: email } }] },
-            'URL': { url: url.startsWith('http') ? url : null },
+            'URL gescannt': { url: url.startsWith('http') ? url : null },
             'Source': { select: { name: source || 'Unknown' } },
           },
         }),
