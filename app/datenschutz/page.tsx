@@ -8,9 +8,9 @@ export default function Datenschutz() {
           <section>
             <h2 className="text-white font-medium mb-2">Verantwortlicher</h2>
             <p>
-              Parre Veischel vun Bitsch<br />
-              Rue de Bitche 69, 57230 Bitche<br />
-              E-Mail: parreveischel@gmail.com
+              AI-SHIFT-DRIFT<br />
+              Berliner Straße 124, 13187 Berlin<br />
+              E-Mail: asd.gastronomie@gmail.com
             </p>
           </section>
 
@@ -55,7 +55,7 @@ export default function Datenschutz() {
               können Sie Ihre lokal gespeicherten Daten jederzeit über die Browser-Einstellungen löschen.
             </p>
             <p className="mt-2">
-              Bei Fragen wenden Sie sich an: parreveischel@gmail.com
+              Bei Fragen wenden Sie sich an: asd.gastronomie@gmail.com
             </p>
           </section>
         </div>

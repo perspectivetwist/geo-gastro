@@ -8,25 +8,25 @@ export default function Impressum() {
           <section>
             <h2 className="text-white font-medium mb-2">Angaben gemäß § 5 TMG</h2>
             <p>
-              Parre Veischel vun Bitsch<br />
-              Rue de Bitche 69<br />
-              57230 Bitche
+              AI-SHIFT-DRIFT<br />
+              Berliner Straße 124<br />
+              13187 Berlin
             </p>
           </section>
 
           <section>
             <h2 className="text-white font-medium mb-2">Kontakt</h2>
-            <p>E-Mail: parreveischel@gmail.com</p>
+            <p>E-Mail: asd.gastronomie@gmail.com</p>
           </section>
 
           <section>
             <h2 className="text-white font-medium mb-2">
-              Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+              Inhaltlich Verantwortlicher gem. § 55 Abs. 2 RStV
             </h2>
             <p>
-              Parre Veischel vun Bitsch<br />
-              Rue de Bitche 69<br />
-              57230 Bitche
+              AI-SHIFT-DRIFT<br />
+              Berliner Straße 124<br />
+              13187 Berlin
             </p>
           </section>
         </div>
