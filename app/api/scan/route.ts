@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
 
     let remaining = 999
     if (!skipRateLimit) {
-      const rateCheck = checkRateLimit(ip)
+      const rateCheck = await checkRateLimit(ip)
       remaining = rateCheck.remaining
       if (!rateCheck.allowed) {
         return NextResponse.json(

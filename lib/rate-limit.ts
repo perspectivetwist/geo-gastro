@@ -1,25 +1,43 @@
-const rateMap = new Map<string, { count: number; resetTime: number }>()
+import { Ratelimit } from '@upstash/ratelimit'
+import { Redis } from '@upstash/redis'
 
-const MAX_REQUESTS = 999999 // Rate Limit ausgesetzt
-const WINDOW_MS = 60 * 60 * 1000 // 1 Stunde
+// Vercel KV (Upstash Redis) — shared across all serverless instances
+const redis = process.env.KV_REST_API_URL
+  ? new Redis({
+      url: process.env.KV_REST_API_URL,
+      token: process.env.KV_REST_API_TOKEN!,
+    })
+  : null
+
+const ratelimit = redis
+  ? new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(2, '1 h'),
+      prefix: 'ratelimit',
+    })
+  : null
+
+// Whitelisted IPs (comma-separated in ENV)
+const WHITELISTED_IPS = (process.env.RATE_LIMIT_WHITELIST_IPS || '')
+  .split(',')
+  .map(ip => ip.trim())
+  .filter(Boolean)
 
 export function isCrawlerAuthorized(secret: string | null): boolean {
   return !!secret && !!process.env.CRAWLER_SECRET && secret === process.env.CRAWLER_SECRET
 }
 
-export function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
-  const now = Date.now()
-  const entry = rateMap.get(ip)
-
-  if (!entry || now > entry.resetTime) {
-    rateMap.set(ip, { count: 1, resetTime: now + WINDOW_MS })
-    return { allowed: true, remaining: MAX_REQUESTS - 1 }
+export async function checkRateLimit(ip: string): Promise<{ allowed: boolean; remaining: number }> {
+  // Whitelisted IPs skip rate limiting
+  if (WHITELISTED_IPS.includes(ip)) {
+    return { allowed: true, remaining: 999 }
   }
 
-  if (entry.count >= MAX_REQUESTS) {
-    return { allowed: false, remaining: 0 }
+  // Fallback if Upstash not configured
+  if (!ratelimit) {
+    return { allowed: true, remaining: 999 }
   }
 
-  entry.count++
-  return { allowed: true, remaining: MAX_REQUESTS - entry.count }
+  const { success, remaining } = await ratelimit.limit(ip)
+  return { allowed: success, remaining }
 }
