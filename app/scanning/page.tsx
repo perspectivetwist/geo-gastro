@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { useEffect, useState, Suspense } from 'react'
 
 const COLOR = '#A8E6A3'
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 const loadingSteps = [
   'Analysiere Schema Markup…',
@@ -17,7 +18,7 @@ function LoadingState({ step }: { step: number }) {
   return (
     <div className="flex flex-col items-center gap-6">
       <video
-        src="/loading-anim.mp4"
+        src={`${BASE_PATH}/loading-anim.mp4`}
         autoPlay
         loop
         muted
@@ -76,7 +77,7 @@ function ScanningContent() {
 
       try {
         const [res] = await Promise.all([
-          fetch('/api/scan', {
+          fetch(`${BASE_PATH}/api/scan`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url: decodeURIComponent(url) }),
