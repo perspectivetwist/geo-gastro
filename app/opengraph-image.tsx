@@ -75,7 +75,7 @@ export default function OgImage() {
           margin: '40px 0 0 0',
         }}
       >
-        geo-transformer.vercel.app
+        www.ki-gastronomie.com
       </p>
     </div>,
     { ...size }

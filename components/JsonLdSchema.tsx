@@ -3,7 +3,7 @@ export default function JsonLdSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "AI Shift Drift",
-    "url": "https://ai-gastro-hub.vercel.app",
+    "url": "https://www.ki-gastronomie.com",
     "sameAs": ["https://github.com/perspectivetwist"]
   }
 

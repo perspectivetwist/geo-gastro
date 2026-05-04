@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Restaurant-Ruf in ChatGPT | GEO Scanner für Gastronomie",
     description:
       "Kostenloser GEO-Scan für die Gastronomie: Wie gut ist dein Restaurant-Ruf in ChatGPT, Perplexity und Google AI sichtbar?",
-    url: "https://geo-gastro.vercel.app",
+    url: "https://www.ki-gastronomie.com/geo-scanner",
     siteName: "GEO Gastro Scanner",
     type: "website",
   },
@@ -56,7 +56,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "AI Shift Drift",
-              "url": "https://ai-gastro-hub.vercel.app",
+              "url": "https://www.ki-gastronomie.com",
               "sameAs": [
                 "https://github.com/perspectivetwist",
                 "https://www.crunchbase.com/organization/ai-shift-drift"

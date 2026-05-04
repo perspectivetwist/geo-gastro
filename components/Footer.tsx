@@ -7,7 +7,7 @@ const ecosystem = [
     dotBg: "linear-gradient(135deg, #FFB432, #FF3CAC)",
     dotShadow: "0 0 8px 2px rgba(255,60,172,0.4)",
     desc: "AI-Readiness für die Gastronomie",
-    url: "https://ai-gastro-hub.vercel.app/",
+    url: "https://www.ki-gastronomie.com/",
   },
   {
     label: "Wake | AEO",
@@ -15,7 +15,7 @@ const ecosystem = [
     dotBg: "#6366f1",
     dotShadow: "0 0 8px 2px #6366f166",
     desc: "Wird dein Restaurant von ChatGPT&Co zitiert?",
-    url: "https://aeo-gastro.vercel.app/",
+    url: "https://www.ki-gastronomie.com/aeo-scanner/",
   },
   {
     label: "Slipstream",
@@ -23,7 +23,7 @@ const ecosystem = [
     dotBg: "#FFE600",
     dotShadow: "0 0 8px 2px #FFE60066",
     desc: "Können Gäste via KI-Agenten bei deinem Restaurant reservieren?",
-    url: "https://agentready-gastro.vercel.app/",
+    url: "https://www.ki-gastronomie.com/agent-scanner/",
   },
   {
     label: "Quantum",
@@ -31,7 +31,7 @@ const ecosystem = [
     dotBg: "#FF2D55",
     dotShadow: "0 0 8px 2px #FF2D5566",
     desc: "Wie angreifbar ist dein Restaurant bei KI-Attacken?",
-    url: "https://aisecurity-gastro.vercel.app/",
+    url: "https://www.ki-gastronomie.com/security-scanner/",
   },
 ]
 
@@ -82,7 +82,7 @@ export default function Footer() {
             {/* Newsroom rechts */}
             <div>
               <a
-                href="https://ai-gastro-hub.vercel.app/newsroom"
+                href="https://www.ki-gastronomie.com/newsroom"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-3 transition-opacity duration-200 hover:opacity-80"

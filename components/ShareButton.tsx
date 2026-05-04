@@ -9,7 +9,7 @@ interface Props {
 export default function ShareButton({ score, resultUrl }: Props) {
   const [copied, setCopied] = useState(false)
 
-  const baseUrl = 'https://geo-gastro.vercel.app'
+  const baseUrl = 'https://www.ki-gastronomie.com/geo-scanner'
   const shareText = `Ich hab gerade gecheckt wie gut mein Betrieb bei ChatGPT & Co bekannt ist: ${score}/100. Kennt ChatGPT & Co deinen Betrieb überhaupt? Kostenlos testen: ${baseUrl}`
 
   function handleWhatsApp() {
