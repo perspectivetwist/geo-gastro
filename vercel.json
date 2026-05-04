@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://www.ki-gastronomie.com/geo-scanner/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",

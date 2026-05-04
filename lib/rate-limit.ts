@@ -12,8 +12,8 @@ const redis = process.env.KV_REST_API_URL
 const ratelimit = redis
   ? new Ratelimit({
       redis,
-      limiter: Ratelimit.slidingWindow(2, '1 h'),
-      prefix: 'ratelimit',
+      limiter: Ratelimit.slidingWindow(50, '1 h'),
+      prefix: 'ratelimit:geo',
     })
   : null
 
