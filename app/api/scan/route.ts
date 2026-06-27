@@ -7,6 +7,7 @@ import { generateKiSummary } from '@/lib/ki-summary'
 
 export const maxDuration = 60
 import { logScan } from '@/lib/notion'
+import { dimensionLabels } from '@/lib/score-labels'
 import { pingIndexNow } from '@/lib/indexnow'
 
 // SSRF-Schutz: Interne IPs und Hostnamen blocken
@@ -130,8 +131,11 @@ export async function POST(request: NextRequest) {
       scannedAt: analysis.scannedAt,
     }
 
-    // Scan in Notion loggen (fire-and-forget)
-    logScan(analysis.url, analysis.score.total).catch(() => {})
+    // Scan in Notion loggen (fire-and-forget) — inkl. Dimensionen + Source
+    const dimStr = Object.entries(analysis.score.dimensions)
+      .map(([key, value]) => `${dimensionLabels[key]?.label ?? key}: ${value}`)
+      .join(', ')
+    logScan(analysis.url, analysis.score.total, dimStr).catch(() => {})
 
     // IndexNow: Result-URL an Bing pushen (fire-and-forget)
     pingIndexNow(analysis.url)
