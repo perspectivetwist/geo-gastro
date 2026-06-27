@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 
   if (notionToken && dbId) {
     try {
-      await fetch('https://api.notion.com/v1/pages', {
+      const res = await fetch('https://api.notion.com/v1/pages', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${notionToken}`,
@@ -36,12 +36,19 @@ export async function POST(request: NextRequest) {
             'Email': { title: [{ text: { content: email } }] },
             'URL gescannt': { url: url.startsWith('http') ? url : null },
             'Source': { select: { name: source || 'Unknown' } },
+            'Status': { select: { name: 'neu' } },
           },
         }),
       })
-    } catch {
-      // Silent fail — unlock anyway
+      // nicht mehr still: Lead-Verlust muss in den Vercel-Logs sichtbar sein
+      if (!res.ok) {
+        console.error('save-lead: Notion-Write fehlgeschlagen', res.status, await res.text())
+      }
+    } catch (err) {
+      console.error('save-lead: Notion-Write Exception', err)
     }
+  } else {
+    console.error('save-lead: NOTION_TOKEN oder NOTION_LEADS_DB_ID fehlt — Lead NICHT gespeichert')
   }
 
   return NextResponse.json({ success: true })
