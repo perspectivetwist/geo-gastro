@@ -3,6 +3,9 @@
 import { useState } from 'react'
 import { trackEmailGate } from '@/lib/gtag'
 
+// basePath (z.B. /geo-scanner) muss vor relative API-Calls, sonst 404 auf der Hub-Domain
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 interface Props {
   primaryColor: string
   scannerSource: string
@@ -37,7 +40,7 @@ export default function EmailGate({ primaryColor, scannerSource, url, onUnlock }
 
     setLoading(true)
     try {
-      await fetch('/api/save-lead', {
+      await fetch(`${BASE_PATH}/api/save-lead`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: trimmed, url, source: scannerSource }),
